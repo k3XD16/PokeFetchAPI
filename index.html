@@ -1,46 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PokeFetchAPI</title>
+    <!--Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            text-align: center;
-            padding-top: 50px;
+        /* Custom style for acrylic effect */
+        .acrylic {
+            @apply bg-white bg-opacity-30 backdrop-filter backdrop-blur-xl;
         }
-        #pokemonName {
-            font-size: 16px;
-            padding: 10px;
-            width: 200px;
-            margin-bottom: 10px;
+        /* Custom style for zoom effect on hover */
+        .zoom:hover {
+            transform: scale(1.05); /* Adjust the scale value as needed */
+            transition: transform 0.3s ease-in-out;
         }
-        button {
-            background-color: #4285F4;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        button:hover {
-            background-color: #3069c7;
-        }
-        #pokemonSprite {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
     </style>
 </head>
-<body>
-    <input type="text" id="pokemonName" placeholder="Enter Pokémon name">
-    <button onclick="fetchData()">Fetch Pokemon</button><br>
-
-    <img src="" alt="Pokemon Sprite" id="pokemonSprite" style="display: none;">
+<body class="bg-gray-100 flex flex-col items-center justify-center h-screen dark:bg-gray-900">
+    <!-- Acrylic effect container -->
+    <div class="acrylic p-6 rounded-lg shadow-lg">
+        <h1 class="text-4xl font-bold text-center mb-8 text-blue-600 dark:text-blue-300">Pokémon FetchAPI</h1>
+        <div class="mb-4">
+            <input type="text" id="pokemonName" placeholder="Enter Pokemon name"
+                class="px-4 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+            <button onclick="fetchData()"
+                class="ml-2 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300 dark:bg-blue-700 dark:hover:bg-blue-800">
+                Fetch Pokemon
+            </button>
+        </div>
+        <!-- Add the 'zoom' class to the image element -->
+        <img src="" alt="Pokemon Sprite" id="pokemonSprite" style="display: none;"
+            class="max-w-xs mx-auto mt-4 zoom">
+    </div>
+    <br>
+    <p id="errorMessage" style="display: none; color: red;"></p>
     <script src="main.js"></script>
 </body>
 </html>

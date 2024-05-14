@@ -12,7 +12,7 @@ async function fetchData() {
         // Check if the API response is successful
         if (!response.ok) {
             // If the response is not successful, throw an error
-            throw new Error("Could not fetch resource");
+            throw new Error("Pokémon not found. Please check the name and try again.");
         }
 
         // Parse the JSON response to get the Pokemon data
@@ -28,7 +28,10 @@ async function fetchData() {
         imgElement.src = pokemonSprite;
         imgElement.style.display = 'block';
     } catch (error) {
-        // Log any errors that occur during the fetch process
-        console.log(error);
+        // Display the error message on the webpage
+        const errorMessageElement = document.getElementById('errorMessage');
+        errorMessageElement.textContent = error.message;
+        errorMessageElement.style.display = 'block';
+        errorMessageElement.className = 'p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800';
     }
 }
